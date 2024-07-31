@@ -3,6 +3,7 @@ import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Signin from '@/views/Signin.vue';
 import Page from '../views/Page.vue';
+import ProductDetail from '@/views/ProductDetail.vue';
 import Forbidden from '../views/Forbidden.vue';
 import Page404 from '../views/Page404.vue';
 
@@ -33,6 +34,12 @@ const routes = [
     path: '/page',
     name: 'page',
     component: Page,
+    meta: { requiresAuth: true, layout: 'DefaultLayout' },
+  },
+  {
+    path: '/product/:id',
+    name: 'ProductDetail',
+    component: ProductDetail,
     meta: { requiresAuth: true, layout: 'DefaultLayout' },
   },
   {

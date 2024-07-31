@@ -6,7 +6,7 @@
   <!-- FOOTER -->
   <footer>
     <!-- Footer container -->
-    <div class="flex flex-col items-center justify-between py-10 px-4 bg-white">
+    <div class="flex flex-col items-center justify-between py-10 px-4 bg-gray-100">
       <!-- Container logo nav -->
       <div class="p-2 mb-8 flex flex-col items-center w-full tablet:flex-row tablet:justify-between">
         <!-- Logo in footer -->

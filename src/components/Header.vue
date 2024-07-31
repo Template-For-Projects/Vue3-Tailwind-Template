@@ -28,7 +28,7 @@ const toggleDropdown = () => {
 
 <template>
   <header class="relative z-50">
-    <nav class="fixed bg-white w-full flex py-4 px-4 justify-between items-center text-black rounded-b-2xl">
+    <nav class="fixed bg-gray-100 w-full flex py-4 px-4 justify-between items-center text-black rounded-b-2xl">
       <ul class="flex justify-center items-center mt-1">
         <!-- Logo -->
         <li class="font-black text-black">

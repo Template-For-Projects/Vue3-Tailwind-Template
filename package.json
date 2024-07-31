@@ -17,6 +17,8 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "aos": "^2.3.4",
     "axios": "^1.7.2",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "jwt-decode": "^4.0.0",
     "vue": "^3.4.21",
     "vue-moment": "^4.1.0",

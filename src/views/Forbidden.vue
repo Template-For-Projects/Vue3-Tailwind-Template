@@ -3,7 +3,6 @@
 
 <template>
   <div>
-    <h1>Accesso Negato</h1>
-    <p>Non hai i permessi necessari per accedere a questa pagina.</p>
+    <h1>AccessDenied</h1>
   </div>
 </template>

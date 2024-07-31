@@ -3,6 +3,8 @@ import { onMounted, onUnmounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { userAuth } from '@/composable/userAuth';
 
+import AnimatedMenuIcon from './AnimatedMenuIcon.vue';
+
 const { logout } = userAuth();
 
 const name = ref('');
@@ -21,8 +23,6 @@ const exitAndRemoveData = () => {
 const toggleDropdown = () => {
   isDropdownOpen.value = !isDropdownOpen.value;
 };
-
-
 
 </script>
 
@@ -49,16 +49,11 @@ const toggleDropdown = () => {
       <ul class="flex justify-center items-center">
         <li class="p-2">
 
-          <!-- Toggle switch -->
-          <div class="card flex justify-center">
-            <ToggleSwitch v-model="checked" @click="toggleDropdown" ref="dropdownButton" class="absolute z-50 right-5 "
-              :pt="{ slider: { class: 'bg-slate-400 hover:!bg-black-gray ' } }">
-            </ToggleSwitch>
-          </div>
+          <!--AnimatedMenuIcon -->
+          <AnimatedMenuIcon :is-open="isDropdownOpen" @toggle="toggleDropdown" class="absolute z-50" />
 
           <!-- Backdrop -->
-          <div v-if="isDropdownOpen" class="fixed inset-0 bg-black-gray bg-opacity-70 backdrop-blur-md z-10"
-            @click="isDropdownOpen = false"></div>
+          <div v-if="isDropdownOpen" class="fixed inset-0  backdrop-blur-md z-10" @click="isDropdownOpen = false"></div>
           <!-- Div drop-down menu -->
           <ul :class="{ 'block': isDropdownOpen, 'hidden': !isDropdownOpen }"
             class="fixed left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 px-2 z-50 w-96 h-104 bg-white shadow-lg rounded-lg flex flex-col justify-center items-center text-sm text-dark-gray">

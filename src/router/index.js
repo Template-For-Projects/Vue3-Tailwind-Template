@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
+import Signin from '@/views/Signin.vue';
 import Page from '../views/Page.vue';
 import Forbidden from '../views/Forbidden.vue';
 import Page404 from '../views/Page404.vue';
@@ -15,6 +16,12 @@ const routes = [
     name: 'login',
     component: Login,
     meta: { layout: 'NoHeaderFooterLayout' }, // Layout per la rotta principale
+  },
+  {
+    path: '/sign-in',
+    name: 'Signin',
+    component: Signin,
+    meta: { layout: 'NoHeaderFooterLayout' },
   },
   {
     path: '/',

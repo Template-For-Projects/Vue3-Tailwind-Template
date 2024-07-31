@@ -1,5 +1,4 @@
 <script setup>
-// LOGIN.VUE
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
 
@@ -14,14 +13,11 @@ const password = ref('');
 const errorMessage = ref('');
 
 const handleLogin = async () => {
-  // console.log('Attempting login with:', { email: email.value, password: password.value });
   try {
     const userData = await login({
       email: email.value,
       password: password.value
     });
-    // console.log('Login successful:', userData);
-    // console.log(userData.access_token);
 
     if (userData && userData.access_token) {
       router.push('/');
@@ -66,7 +62,6 @@ const handleLogin = async () => {
           type="password" placeholder="Password" required>
       </div>
 
-
       <!-- ERROR MESSAGE -->
       <div class="flex items-center justify-center">
         <div v-if="errorMessage" class="w-72 text-center text-danger font-bold  mb-4">
@@ -85,6 +80,14 @@ const handleLogin = async () => {
           </div>
         </button>
       </div>
+
+      <!-- Sign In -->
+      <div class="mt-4 text-center">
+        <router-link to="/sign-in" class="text-icon-gray font-medium hover:font-bold">
+          Don't have an account? Sign up
+        </router-link>
+      </div>
+
     </form>
   </div>
 </template>

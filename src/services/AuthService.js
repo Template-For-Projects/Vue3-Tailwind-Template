@@ -24,6 +24,27 @@ class AuthService {
     }
   }
 
+  async signin(data) {
+    try {
+      const response = await axiosIstance.post('auth/sign-in', data);
+      if (response.data && response.data.data) {
+        const { access_token: accessToken, refresh_token: refreshToken } =
+          response.data.data;
+        if (accessToken && refreshToken) {
+          this.setTokens(accessToken, refreshToken);
+          return response.data.data;
+        } else {
+          throw new Error('Access token or refresh token missing in response');
+        }
+      } else {
+        throw new Error('Unexpected response structure');
+      }
+    } catch (error) {
+      console.error('Sign-in failed:', error);
+      throw error;
+    }
+  }
+
   logout() {
     localStorage.removeItem('accessToken');
     localStorage.removeItem('refreshToken');

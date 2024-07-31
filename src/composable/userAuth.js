@@ -26,6 +26,20 @@ export function userAuth() {
     }
   };
 
+  const signin = async (userData) => {
+    try {
+      const response = await AuthService.signin(userData);
+      accessToken.value = response.access_token;
+      const userDataResponse = await UserService.getUser();
+      userData.value = userDataResponse;
+      localStorage.setItem('userData', JSON.stringify(userData.value));
+      return response;
+    } catch (error) {
+      console.error('Sign-in failed:', error);
+      throw error;
+    }
+  };
+
   const logout = () => {
     AuthService.logout();
     accessToken.value = null;
@@ -49,6 +63,7 @@ export function userAuth() {
     userData,
     isAuthenticated,
     login,
+    signin,
     logout,
     refreshToken,
   };

@@ -1,6 +1,5 @@
-// api.js
 import axios from 'axios';
-import AuthService from './services/AuthService';
+import AuthService from '@/services/AuthService';
 
 const instance = axios.create({
   baseURL: 'http://localhost:8080/api',
@@ -13,17 +12,20 @@ const instance = axios.create({
 // Request interceptor
 instance.interceptors.request.use(
   async (config) => {
-    // Skip token validation for login request
-    if (config.url === 'auth/login') {
+    // Skip token validation for login and sign-in requests
+    if (config.url === 'auth/login' || config.url === 'auth/sign-in') {
       return config;
     }
 
     try {
       const tokenResult = await AuthService.ensureValidToken();
       if (tokenResult && tokenResult.status === 'RE_LOGIN_REQUIRED') {
+        // You might want to redirect to login page here
         return Promise.reject('Re-login required');
       }
-      config.headers['Authorization'] = `Bearer ${tokenResult}`;
+      if (tokenResult) {
+        config.headers['Authorization'] = `Bearer ${tokenResult}`;
+      }
     } catch (error) {
       console.error('Token validation failed:', error);
       return Promise.reject(error);
@@ -60,7 +62,7 @@ instance.interceptors.response.use(
       } catch (refreshError) {
         console.error('Error refreshing token:', refreshError);
         AuthService.logout();
-        // Redirect to login page or handle the error
+        // You might want to redirect to login page here
         return Promise.reject(refreshError);
       }
     }

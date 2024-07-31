@@ -9,7 +9,7 @@ const user = ref(null);
 const error = ref(null);
 const otherSection = ref(null);
 
-const concerts = ref(null);
+const products = ref(null);
 
 onMounted(async () => {
   try {
@@ -28,8 +28,8 @@ const scrollToOtherSection = () => {
 onMounted(async () => {
   try {
     const data = await ProductService.getProducts();
-    concerts.value = data;
-    console.log('Concerti caricati:', concerts.value);
+    products.value = data;
+    console.log('Concerti caricati:', products.value);
     return data;
   } catch (error) {
     console.error('Errore nel caricamento dei concerti:', error);
@@ -84,14 +84,14 @@ onMounted(async () => {
   </section>
 
   <!-- Data table -->
-  <section class="">
+  <section class="mb-10">
     <div data-aos="fade-up">
       <PersonalDataTable />
     </div>
   </section>
 
   <!-- Text section -->
-  <section ref="otherSection" class="w-104 py-10 tablet:w-128 desktop:w-200">
+  <section ref="otherSection" class="w-104 py-20 tablet:w-128 desktop:w-200">
     <div class="text-gray-p text-sm" data-aos="fade-up" data-aos-anchor-placement="top-center">
       <h3 class="text-black-gray text-lg font-black">Subtitle</h3>
       <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem unde doloribus voluptatem, dolores alias quod

@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, onUnmounted, ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { userAuth } from '@/composable/userAuth';
 
@@ -11,9 +11,11 @@ const name = ref('');
 
 const router = useRouter();
 const isDropdownOpen = ref(false);
-const dropdownButton = ref(null);
 
-const checked = ref(false);
+
+watch(() => router.currentRoute.value.path, () => {
+  isDropdownOpen.value = false;
+});
 
 const exitAndRemoveData = () => {
   logout();
@@ -73,10 +75,10 @@ const toggleDropdown = () => {
             <!-- Voices -->
             <div class="mb-6">
               <li class="py-2 cursor-pointer font-medium text-gray-p  hover:text-black-gray ">
-                <RouterLink name="prenotations" to="/prenotations">Navigate to Page 1</RouterLink>
+                <RouterLink name="orders" to="/orders">Navigate to Page 1</RouterLink>
               </li>
               <li class="py-2 cursor-pointer font-medium text-gray-p  hover:text-black-gray ">
-                <RouterLink name="home" to="/home">Navigate to Page 2</RouterLink>
+                <RouterLink name="home" to="/">Navigate to Page 2</RouterLink>
               </li>
             </div>
 

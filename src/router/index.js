@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import Home from '../views/Home.vue';
 import Login from '../views/Login.vue';
 import Signin from '@/views/Signin.vue';
-import Page from '../views/Page.vue';
+import Orders from '../views/Orders.vue';
 import ProductDetail from '@/views/ProductDetail.vue';
 import Forbidden from '../views/Forbidden.vue';
 import Page404 from '../views/Page404.vue';
@@ -31,9 +31,9 @@ const routes = [
     meta: { requiresAuth: true, layout: 'DefaultLayout' },
   },
   {
-    path: '/page',
-    name: 'page',
-    component: Page,
+    path: '/orders',
+    name: 'orders',
+    component: Orders,
     meta: { requiresAuth: true, layout: 'DefaultLayout' },
   },
   {

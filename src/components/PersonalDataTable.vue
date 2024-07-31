@@ -97,7 +97,7 @@ const goToProductDetail = (id) => {
         class=" mb-6 w-full items-center justify-center flex flex-col tablet:flex-row space-y-2 tablet:space-y-0 tablet:space-x-2">
         <div class="relative inline-block text-left w-72 items-center justify-center tablet:w-auto">
           <button type="button" @click="toggleDropdown"
-            class="inline-flex justify-center w-72  rounded-md shadow-xl px-4 py-3 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
+            class="inline-flex justify-center w-72  rounded-md shadow-xl px-4 py-3 bg-white text-sm font-medium text-dark-gray hover:bg-gray-50 focus:outline-none"
             id="options-menu" aria-haspopup="true" :aria-expanded="isOpen">
             {{ getFieldLabel(selectedField) }}
             <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"
@@ -113,12 +113,12 @@ const goToProductDetail = (id) => {
             role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
             <div class="py-1" role="none">
               <a href="#" @click.prevent="selectField('all')"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">All
+                class="block px-4 py-2 text-sm text-dark-gray hover:bg-gray-100 hover:text-gray-900" role="menuitem">All
                 fields</a>
             </div>
             <div class="py-1" role="none">
               <a href="#" v-for="field in fields" :key="field" @click.prevent="selectField(field)"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+                class="block px-4 py-2 text-sm text-dark-gray hover:bg-gray-100 hover:text-gray-900" role="menuitem">
                 {{ getFieldLabel(field) }}
               </a>
             </div>
@@ -141,7 +141,7 @@ const goToProductDetail = (id) => {
             </tr>
           </thead>
           <tbody class="text-dark-gray">
-            <tr v-for="product in paginatedProducts" :key="product.id" class="hover:bg-gray-100"
+            <tr v-for="product in paginatedProducts" :key="product.id" class="hover:bg-gray-100 text-custom-xs"
               @click="goToProductDetail(product.id)">
               <td v-for="col in fields.slice(0, 3)" :key="col" class="p-4 border-t border-gray-200 cursor-pointer">
                 {{ product[col] }}
@@ -156,7 +156,8 @@ const goToProductDetail = (id) => {
         <table class="w-full text-left border-collapse">
           <thead>
             <tr>
-              <th v-for="col in fields" :key="col" class="p-4 border-b border-gray-200 bg-gray-100 text-black-gray">
+              <th v-for="col in fields" :key="col"
+                class="p-4 border-b border-gray-200 bg-gray-100 text-black-gray text-sm">
                 {{ getFieldLabel(col) }}
               </th>
             </tr>

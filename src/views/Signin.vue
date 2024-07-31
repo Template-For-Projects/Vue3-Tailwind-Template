@@ -11,6 +11,7 @@ const email = ref('');
 const password = ref('');
 const confirmPassword = ref('');
 const name = ref('');
+const surname = ref('');
 const errorMessage = ref('');
 
 const handleSignin = async () => {
@@ -74,7 +75,11 @@ const handleSignin = async () => {
     <form class="w-64" @submit.prevent="handleSignin">
       <div class="mb-4">
         <input class="w-full text-dark-gray px-4 py-3 rounded-xl shadow-xl focus:outline-none" v-model="name"
-          type="text" placeholder="Full Name" required>
+          type="text" placeholder="Name" required>
+      </div>
+      <div class="mb-4">
+        <input class="w-full text-dark-gray px-4 py-3 rounded-xl shadow-xl focus:outline-none" v-model="surname"
+          type="text" placeholder="Surname" required>
       </div>
       <div class="mb-4">
         <input class="w-full text-dark-gray px-4 py-3 rounded-xl shadow-xl focus:outline-none" v-model="email"
@@ -102,7 +107,7 @@ const handleSignin = async () => {
            transition-all duration-300 ease-in-out
            hover:text-white group hover:shadow-none" type="submit">
           <router-link to="/">
-            <span class="relative z-10">Home</span>
+            <span class="relative z-10">Back</span>
             <div
               class="absolute inset-0 bg-black-gray shadow-inner-strong transform -translate-x-full group-hover:translate-x-0 transition-transform duration-500 ease-in-out">
             </div>
